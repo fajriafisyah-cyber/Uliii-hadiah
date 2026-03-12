@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Uli 🧡</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(180deg, #1a1a2e, #ff9a9e);
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            background: #ff6b8a;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background: #ff3b5c;
+            transform: scale(1.05);
+        }
+
+        img {
+            width: 100%;
+            border-radius: 15px;
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .heart {
+            position: fixed;
+            top: -20px;
+            font-size: 20px;
+            animation: fall linear infinite;
+            z-index: 999;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh); }
+        }
+
+        .moment img {
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .heart-gallery {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+            margin-top: 25px;
+        }
+
+        .heart-gallery img {
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 0;
+        }
+
+        .love {
+            font-size: 35px;
+            margin-top: 25px;
+            color: #ff3b5c;
+            font-weight: bold;
+            animation: beat 0.8s infinite alternate;
+        }
+
+        @keyframes beat {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+
+<div id="music-container"></div>
+
+<div class="container" id="p1">
+    <h1>Untuk Uli 🧡</h1>
+    <img src="foto1.jpg" alt="Foto 1">
+    <p>Ada sesuatu yang ingin aku sampaikan...</p>
+    <button onclick="next1()">Buka Pesan Ini</button>
+</div>
+
+<div class="container" id="p2" style="display:none">
+    <h1>Selamat Seminar Hasil 🎓</h1>
+    <p>Uli, perjalanan ini tidak mudah. Ada banyak lelah dan perjuangan yang mungkin tidak semua orang lihat.</p>
+    <p>Tapi aku melihat semuanya. Aku benar-benar bangga sama kamu.</p>
+    <button onclick="next2()">Lihat Perjalanan Kita</button>
+</div>
+
+<div class="container" id="p3" style="display:none">
+    <h1>Perjalanan Kita</h1>
+    <div class="moment">
+        <img src="foto3.jpg" alt="Foto 3">
+        <p>Awal kamu mulai suka sama aku</p>
+    </div>
+    <div class="moment">
+        <img src="foto4.jpg" alt="Foto 4">
+        <p>Foto favorit kita</p>
+    </div>
+    <button onclick="next3()">Lanjut</button>
+</div>
+
+<div class="container" id="p4" style="display:none">
+    <h1>Surat Untuk Uli 💌</h1>
+    <p>Website kecil ini mungkin sederhana. Tapi di setiap halaman ada cerita tentang betapa bangganya aku sama kamu.</p>
+    <p>Terima kasih sudah berjuang. Terima kasih sudah tetap kuat.</p>
+    <button onclick="next4()">Halaman Terakhir</button>
+</div>
+
+<div class="container" id="p5" style="display:none">
+    <h1>Kenangan Kita</h1>
+    <div class="heart-gallery">
+        <img src="foto1.jpg"><img src="foto2.jpg"><img src="foto3.jpg"><img src="foto4.jpg"><img src="foto5.jpg">
+        <img src="foto2.jpg"><img src="foto3.jpg"><img src="foto4.jpg"><img src="foto5.jpg"><img src="foto1.jpg">
+        <img src="foto3.jpg"><img src="foto4.jpg"><img src="foto5.jpg"><img src="foto1.jpg"><img src="foto2.jpg">
+        <img src="foto4.jpg"><img src="foto5.jpg"><img src="foto1.jpg"><img src="foto2.jpg"><img src="foto3.jpg">
+    </div>
+    <div class="love">I LOVE YOU ULII ❤️</div>
+</div>
+
+<script>
+    function next1(){
+        // Mulai putar musik saat tombol pertama diklik
+        document.getElementById("music-container").innerHTML = `
+            <iframe width="0" height="0" 
+            src="https://www.youtube.com/embed/8UVNT4wvIGY?autoplay=1" 
+            frameborder="0" allow="autoplay"></iframe>`;
+        
+        showPage("p1", "p2");
+    }
+
+    function next2(){ showPage("p2", "p3"); }
+    function next3(){ showPage("p3", "p4"); }
+    function next4(){ showPage("p4", "p5"); }
+
+    function showPage(oldId, newId) {
+        document.getElementById(oldId).style.display = "none";
+        document.getElementById(newId).style.display = "block";
+        window.scrollTo(0,0);
+    }
+
+    // Efek Hujan Hati
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "🧡";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        heart.style.opacity = Math.random();
+        document.body.appendChild(heart);
+        
+        setTimeout(() => { heart.remove(); }, 5000);
+    }
+    setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
